@@ -38,11 +38,12 @@ func New(input []byte, writer io.Writer, userAgent, timeOut string) (*Monitor, e
 		userAgent: userAgent,
 		timeOut:   time.Duration(t) * time.Second,
 	}
-	for i := range m.work.Tasks {
+	for i := 0; i < len(m.work.Tasks); i++ {
 		err := m.work.Tasks[i].prepare(m.work.CheckingPeriod, m.userAgent, m.timeOut)
 		if err != nil {
 			//remove task from list
 			m.work.Tasks = append(m.work.Tasks[:i], m.work.Tasks[i+1:]...)
+			i--
 		}
 	}
 

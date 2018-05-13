@@ -236,6 +236,20 @@ func TestNew(t *testing.T) {
 			},
 		},
 		{
+			name: "Negative checking_period",
+			args: args{
+				input:     []byte(`{"checking_period": 3, "tasks":[{"ref_id": "1","url":"http://validurl", "what_to_check": "response","checking_period": -5}]}`),
+				userAgent: "dummy_user_Agent",
+				timeOut:   "10",
+			},
+			want: &Monitor{
+				work: &work{
+					CheckingPeriod: 3,
+					Tasks:          []task{},
+				},
+			},
+		},
+		{
 			name: "Task checking_period override",
 			args: args{
 				input:     []byte(`{"checking_period": 3, "tasks":[{"ref_id": "1","url":"http://validurl", "what_to_check": "response","checking_period": 5}]}`),
@@ -265,6 +279,26 @@ func TestNew(t *testing.T) {
 			want: &Monitor{
 				work: &work{
 					Tasks: []task{},
+				},
+			},
+		},
+		{
+			name: "Task user-agent override",
+			args: args{
+				input:     []byte(`{"checking_period": 3, "tasks":[{"ref_id": "1","url":"http://validurl", "what_to_check": "response","checking_period": 5,"user_agent":"user_agent_override"}]}`),
+				userAgent: "dummy_user_Agent",
+				timeOut:   "10",
+			},
+			want: &Monitor{
+				work: &work{
+					CheckingPeriod: 3,
+					Tasks: []task{{
+						RefID:          "1",
+						URL:            "http://validurl",
+						CheckingPeriod: 5,
+						WhatToCheck:    "response",
+						UserAgent:      "user_agent_override",
+					}},
 				},
 			},
 		},

@@ -14,9 +14,9 @@ import (
 type task struct {
 	RefID          string `json:"ref_id"` //uniquely identifies each task
 	URL            string `json:"url" validate:"required,url"`
-	CheckingPeriod int64  `json:"checking_period" validate:"required"` //frequencey at which check is done in secs
-	WhatToCheck    string `json:"what_to_check" validate:"required"`   //the text to be checked
-	UserAgent      string `json:"user_agent"`                          //user agent is sent in the header
+	CheckingPeriod int64  `json:"checking_period" validate:"min=1"`  //frequencey at which check is done in secs
+	WhatToCheck    string `json:"what_to_check" validate:"required"` //the text to be checked
+	UserAgent      string `json:"user_agent"`                        //user agent is sent in the header
 	httpClient     *http.Client
 	stop           chan bool
 }
@@ -28,13 +28,15 @@ func (t *task) prepare(defCheckingPeriod int64, defUserAgent string, timeOut tim
 	if len(t.UserAgent) == 0 {
 		t.UserAgent = defUserAgent
 	}
-	t.httpClient = &http.Client{Timeout: timeOut}
-	t.stop = make(chan bool, 1)
+
 	err := validator.New().Struct(t)
 	if err != nil {
-		log.Println(err)
+		log.Printf("error validating task. Task %+v. Error: %v", t, err)
+		return err
 	}
-	return err
+	t.httpClient = &http.Client{Timeout: timeOut}
+	t.stop = make(chan bool, 1)
+	return nil
 }
 
 func (t *task) run(results chan *result) {
