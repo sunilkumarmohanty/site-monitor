@@ -1,4 +1,4 @@
 vendor
-terraform.tfstate
-terraform.tfstate.backup
-.terraform
+ingra/terraform.tfstate
+infra/terraform.tfstate.backup
+infra/.terraform
