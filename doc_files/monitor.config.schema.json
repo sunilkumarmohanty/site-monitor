@@ -1,0 +1,80 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "properties": {
+    "checking_period": {
+      "$id": "/properties/checking_period",
+      "type": "integer",
+      "title": "The Checking_period Schema ",
+      "description": "An explanation about the purpose of this instance.",
+      "default": 0,
+      "examples": [
+        10
+      ]
+    },
+    "tasks": {
+      "$id": "/properties/tasks",
+      "type": "array",
+      "items": {
+        "$id": "/properties/tasks/items",
+        "type": "object",
+        "properties": {
+          "ref_id": {
+            "$id": "/properties/tasks/items/properties/ref_id",
+            "type": "string",
+            "title": "The Ref_id Schema ",
+            "description": "An ID to uniquely identify a task",
+            "default": "",
+            "examples": [
+              "ref_1"
+            ]
+          },
+          "url": {
+            "$id": "/properties/tasks/items/properties/url",
+            "type": "string",
+            "title": "The Url Schema ",
+            "description": "The URL of the website to be searched. The field must contain a schema for example http:// or https://.",
+            "default": "",
+            "examples": [
+              "https://gobyexample.com/writing-files"
+            ]
+          },
+          "what_to_check": {
+            "$id": "/properties/tasks/items/properties/what_to_check",
+            "type": "string",
+            "title": "The What_to_check Schema ",
+            "description": "The text in the response body to be searched.",
+            "default": "",
+            "examples": [
+              "To start,"
+            ]
+          },
+          "checking_period": {
+            "$id": "/properties/tasks/items/properties/checking_period",
+            "type": "integer",
+            "title": "The Checking_period Schema ",
+            "description": "The frequency at which the website is to be checked  (in secs). If present, this overrides the value of checking_period present at root. The final checking_period should be more than 0",
+            "default": 0,
+            "examples": [
+              1
+            ]
+          },
+          "user_agent": {
+            "$id": "/properties/tasks/items/properties/user_agent",
+            "type": "string",
+            "title": "The User_agent Schema ",
+            "description": "The value of User-Agent header field when the request are made to the site.",
+            "default": "",
+            "examples": [
+              "monitorv1.0.0"
+            ]
+          }
+        },
+        "required": [
+          "url",
+          "what_to_check"
+        ]
+      }
+    }
+  }
+}

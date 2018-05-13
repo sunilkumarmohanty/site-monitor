@@ -1,0 +1,76 @@
+{
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "properties": {
+      "ref_id": {
+        "$id": "/properties/ref_id",
+        "type": "string",
+        "title": "The Ref_id Schema ",
+        "description": "ref_id uniquely identifies a task. This can help in collating the final result.",
+        "default": "",
+        "examples": [
+          "ref_2"
+        ]
+      },
+      "url": {
+        "$id": "/properties/url",
+        "type": "string",
+        "title": "The Url Schema ",
+        "description": "The URL of the website to be searched. The field must contain a schema for example http:// or https://.",
+        "default": "",
+        "examples": [
+          "https://gobyexample.com/writing-files"
+        ]
+      },
+      "status_code": {
+        "$id": "/properties/status_code",
+        "type": "integer",
+        "title": "The Status_code Schema ",
+        "description": "The HTTP response status code.",
+        "default": 0,
+        "examples": [
+          200
+        ]
+      },
+      "resp_duration": {
+        "$id": "/properties/resp_duration",
+        "type": "integer",
+        "title": "The Resp_duration Schema ",
+        "description": "Duration it took to get the response in nanoseconds.",
+        "default": 0,
+        "examples": [
+          188439618
+        ]
+      },
+      "found": {
+        "$id": "/properties/found",
+        "type": "boolean",
+        "title": "The Found Schema ",
+        "description": "Whether match was found or not.",
+        "default": false,
+        "examples": [
+          true
+        ]
+      },
+      "comments": {
+        "$id": "/properties/comments",
+        "type": "string",
+        "title": "The Comments Schema ",
+        "description": "Comments. Sometimes has error details.",
+        "default": "",
+        "examples": [
+          "Searching: To start,"
+        ]
+      },
+      "date_time": {
+        "$id": "/properties/date_time",
+        "type": "integer",
+        "title": "The Date_time Schema ",
+        "description": "DateTime when the result was computed. This is in epoch format in nanoseconds.",
+        "default": 0,
+        "examples": [
+          1526225092626278700
+        ]
+      }
+    }
+  }

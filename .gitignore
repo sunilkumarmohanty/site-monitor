@@ -2,3 +2,4 @@ vendor
 ingra/terraform.tfstate
 infra/terraform.tfstate.backup
 infra/.terraform
+logs
