@@ -43,6 +43,7 @@ docker run monitor
 
 ### go
 ```
+dep ensure --vendor-only
 go run cmd/main.go
 ```
 
