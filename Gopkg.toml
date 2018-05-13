@@ -1,0 +1,11 @@
+[[constraint]]
+  name = "gopkg.in/go-playground/validator.v9"
+  version = "9.17.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true
+
+[[constraint]]
+  branch = "master"
+  name = "golang.org/x/net"
