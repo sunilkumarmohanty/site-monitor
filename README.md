@@ -58,3 +58,10 @@ terraform get && terraform apply -var-file=environments/dev.tfvars
 ```
 
 Please change the value set in the dev.tfvars as per requirement.
+
+## Credits
+Some of the code in this application are inspired from some open source works. We acknowledge and are grateful to these developers for their contributions to open source.
+
+Project: https://github.com/arminc/terraform-ecs
+
+License(MIT): https://github.com/arminc/terraform-ecs/blob/master/LICENSE
